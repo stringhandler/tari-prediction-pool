@@ -1,1 +1,2 @@
-image: quay.io/tarilabs/dan-testing:latest
+image: 
+  file: .gitpod.Dockerfile
