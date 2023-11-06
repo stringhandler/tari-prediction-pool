@@ -3,4 +3,5 @@ image:
 
 tasks:
   - name: Start servers
-    command: python3 main.py
+    env: DAN_TESTING_DATA_FOLDER: /home/gitpod/temp
+    command: python3 /home/tari/sources/dan-testing/main.py
