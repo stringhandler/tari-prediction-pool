@@ -3,14 +3,14 @@ use tari_template_lib::prelude::*;
 #[template]
 mod superbru_template {
     use super::*;
-    use tari_template_abi::rust::collections::HashMap;
+    use tari_template_abi::rust::collections::BTreeMap;
 
     pub struct SuperBruPool {
         treasury: Vault,
         // allowed_accounts: Vec<ComponentAddress>,
         team_1: String,
         team_2: String,
-        prediction_difference: HashMap<RistrettoPublicKeyBytes, i32>,
+        prediction_difference: BTreeMap<RistrettoPublicKeyBytes, u64>,
     }
 
     impl SuperBruPool {
@@ -34,17 +34,17 @@ mod superbru_template {
             }
         }
 
-        pub fn make_prediction(&mut self, difference: i32, mut membership: Bucket) {
-            if membership.resource_address() != self.treasury.resource_address() {
-                // error("Not the right resource");
-                panic!("error1");
-            }
-            if membership.amount() != Amount(1) {
-                // error("Not enough to play");
-                panic!("error2");
-            }
+        pub fn make_prediction(&mut self, difference: u64, mut membership: Bucket) {
+            // if membership.resource_address() != self.treasury.resource_address() {
+            // error("Not the right resource");
+            // panic!("error1");
+            // }
+            // if membership.amount() != Amount(1) {
+            // error("Not enough to play");
+            // panic!("error2");
+            // }
             // burn the token
-            membership.burn();
+            // membership.burn();
             self.prediction_difference
                 .insert(CallerContext::caller(), difference);
         }
